@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="trident-7.2.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/resource/libraries/binrary/trident-7.2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/resource/libraries/binrary/laf-widget-7.2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/resource/libraries/binrary/substance-7.2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/resource/libraries/binrary/laf-plugin-7.2.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
