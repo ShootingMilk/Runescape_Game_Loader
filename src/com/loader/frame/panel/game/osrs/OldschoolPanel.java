@@ -6,6 +6,7 @@ import com.loader.utilities.FontInstaller;
 import com.loader.web.Parameters;
 
 import javax.swing.*;
+import java.applet.Applet;
 import java.awt.*;
 
 /**
@@ -17,7 +18,7 @@ public class OldschoolPanel {
 
     private JPanel loadingPanel;
 
-    private JPanel gamePanel;
+    private Applet applet;
 
     private static OldschoolPanel instance = new OldschoolPanel();
 
@@ -49,7 +50,6 @@ public class OldschoolPanel {
                 Thread.sleep(1000);
                 return null;
             }
-
             @Override
             protected void done() {
                 jProgressBar.setString(text + "          " + value + "%");
@@ -74,11 +74,11 @@ public class OldschoolPanel {
         LoaderFrame.getInstance().resizeFrameD(350, 110, false);
         LoaderFrame.getInstance().setTitle("OSRS Game Loader!");
         LoaderFrame.getInstance().addComponentToContentPane(loadingPanel);
-        updateStatus("Updating Oldschool Game Parameters!", Color.MAGENTA, 20);
+        updateStatus("Updating Oldschool Game Parameters!", Color.MAGENTA, 25);
         Parameters.getInstance().grabParameters("OSRS");
-        updateStatus("Checking for OSRS Game Updates!", Color.GREEN, 40);
+        updateStatus("Checking for OSRS Game Updates!", Color.GREEN, 50);
         // TODO Check for game update!
-        updateStatus("Downloading new OSRS Update!", Color.RED, 60);
+        updateStatus("Downloading new OSRS Update!", Color.RED, 75);
         // TODO Download Manager!
         if (loadingProcessComplete()) {
             addContent();
@@ -86,9 +86,18 @@ public class OldschoolPanel {
     }
 
     private void addContent() {
-        System.out.println("Complete!");
-        updateStatus("Loading OSRS Game Applet!", Color.YELLOW, 80);
-        // TODO load osrs applet
-        updateStatus("Initiating OSRS Game Applet!", Color.BLACK, 100);
+        updateStatus("Loading OSRS Game Applet!", Color.YELLOW, 100);
+        RunescapeStub stub = new RunescapeStub();
+        setApplet(stub.getApplet());
+        stub.getApplet().init();
+        stub.getApplet().start();
     }
+
+    public void setApplet(Applet applet) {
+        if (loadingPanel.getComponentCount() > 0) {
+            loadingPanel.removeAll();
+        }
+        this.applet = applet;
+        loadingPanel.add(applet);
     }
+}

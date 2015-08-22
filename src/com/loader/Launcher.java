@@ -3,6 +3,7 @@ package com.loader;
 import com.loader.frame.LoaderFrame;
 import com.loader.frame.panel.InnerLoadingPanel;
 import com.loader.utilities.FontInstaller;
+import com.loader.utilities.PathInitiater;
 import org.pushingpixels.substance.api.skin.SubstanceBusinessBlueSteelLookAndFeel;
 
 import javax.swing.*;
@@ -20,6 +21,7 @@ public class Launcher {
             } catch (UnsupportedLookAndFeelException e) {
                 e.printStackTrace();
             }
+            PathInitiater.getInstance().initiate();
             FontInstaller.initiate();
             LoaderFrame.getInstance().createFrame();
             InnerLoadingPanel.getInstance().createPanel();
